@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Nautilus version: 
- * Wed May  3 17:47:42 2023
+ * Wed May  3 18:32:41 2023
  */
 #define AUTOCONF_INCLUDED
 
@@ -172,6 +172,8 @@
 #define NAUT_CONFIG_DEBUG_VIRTIO_NET 1
 #define NAUT_CONFIG_VIRTIO_BLK 1
 #define NAUT_CONFIG_DEBUG_VIRTIO_BLK 1
+#define NAUT_CONFIG_VIRTIO_GPU 1
+#define NAUT_CONFIG_DEBUG_VIRTIO_GPU 1
 #define NAUT_CONFIG_E1000_PCI 1
 #define NAUT_CONFIG_DEBUG_E1000_PCI 1
 #undef NAUT_CONFIG_E1000E_PCI
