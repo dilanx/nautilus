@@ -1,4 +1,4 @@
-make isoimage && sudo qemu-system-x86_64 \
+sudo qemu-system-x86_64 \
 	-smp 2 \
 	-m 2048 \
 	-vga virtio \
