@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Nautilus version: 
- * Wed May  3 16:52:52 2023
+ * Wed May  3 17:47:42 2023
  */
 #define AUTOCONF_INCLUDED
 
@@ -195,7 +195,7 @@
 #undef NAUT_CONFIG_DEBUG_NET_ETHERNET_ARP
 #undef NAUT_CONFIG_NET_COLLECTIVE
 #define NAUT_CONFIG_NET_LWIP 1
-#define NAUT_CONFIG_DEBUG_NET_LWIP 1
+#undef NAUT_CONFIG_DEBUG_NET_LWIP
 
 /*
  * LWIP Apps

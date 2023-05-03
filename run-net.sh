@@ -1,8 +1,10 @@
-qemu-system-x86_64 \
+sudo qemu-system-x86_64 \
 	-smp 2 \
 	-m 2048 \
 	-vga std \
 	-serial stdio \
 	-cdrom nautilus.iso \
-	-device virtio-net,netdev=mynet0 \
-	-netdev user,id=mynet0,net=192.168.76.0/24,dhcpstart=192.168.76.9
+	-netdev tap,ifname=tap0,script=no,id=net0 \
+	-device virtio-net,netdev=net0 \
+	-netdev user,id=net1,net=192.168.76.0/24,dhcpstart=192.168.76.9 \
+	-device e1000,netdev=net1
