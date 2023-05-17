@@ -3,7 +3,8 @@ obj-y += apic.o \
 	 i8254.o \
 	 ps2.o \
 	 pci.o \
-         vga.o \
+	 vga.o \
+	 vnc_gpu.o \
 
 ifndef NAUT_CONFIG_XEON_PHI
 obj-y += serial.o
