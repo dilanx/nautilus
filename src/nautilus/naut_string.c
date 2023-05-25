@@ -91,11 +91,11 @@ memcpy (void * dst, const void * src, size_t n)
 
 
 void * 
-memset (void * dst, char c, size_t n)
+memset (void * dst, int c, size_t n)
 {
     unsigned char * d = (unsigned char *)dst;
     while (n--) {
-        *d++ = c;
+        *d++ = (char) c;
     }
 
     return dst;

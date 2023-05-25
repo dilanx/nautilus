@@ -6,6 +6,8 @@ obj-y += apic.o \
 	 vga.o \
 	 vnc_gpu.o \
 
+#CFLAGS += $(pkg-config --cflags --libs libvncserver)
+
 ifndef NAUT_CONFIG_XEON_PHI
 obj-y += serial.o
 endif

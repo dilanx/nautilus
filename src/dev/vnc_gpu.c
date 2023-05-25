@@ -7,13 +7,12 @@
  * COMP_SCI 446 course.
  */
 
-#include <nautilus/nautilus.h>
 #include <dev/vnc_gpu.h>
+#include <nautilus/nautilus.h>
 
 #define INFO(fmt, args...) INFO_PRINT("vnc_gpu: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("vnc_gpu: " fmt, ##args)
 #define ERROR(fmt, args...) ERROR_PRINT("vnc_gpu: " fmt, ##args)
-
 
 struct vnc_gpu_dev* vnc_init(uint32_t fb_width, uint32_t fb_height, uint32_t bbp) {
 
