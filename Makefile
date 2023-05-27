@@ -625,6 +625,7 @@ ifdef NAUT_CONFIG_PALACIOS
 # image attachement here somewhere for testing, probably via a linker script
 endif
 
+CFLAGS += -I/usr/local/include -L/usr/local/lib -lvncserver
 
 # The all: target is the default when no target is given on the
 # command line.
