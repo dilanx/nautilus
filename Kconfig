@@ -143,6 +143,18 @@ menu "Platform"
     	bool "Launch embedded VM at boot as Management VM"
         depends on PALACIOS
         default 0
+
+    config LIBVNC
+      bool "Enable VNC support with LibVNC"
+        default 0
+    config LIBVNC_DIR
+      depends on LIBVNC
+      string "Path to LibVNC"
+        default "../libvnc"
+        help
+          Path to the LibVNC directory, which should have a build directory
+          within it with libvncserver.a inside that
+
         
 endmenu
 

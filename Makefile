@@ -625,13 +625,19 @@ ifdef NAUT_CONFIG_PALACIOS
 # image attachement here somewhere for testing, probably via a linker script
 endif
 
-CFLAGS += -I/usr/local/include -L/usr/local/lib -lvncserver
+ifdef NAUT_CONFIG_LIBVNC
+  LIBVNC_DIR = $(subst "",,$(NAUT_CONFIG_LIBVNC_DIR))
+  CFLAGS += -I$(LIBVNC_DIR)/include -I$(LIBVNC_DIR)/build/include
+  libs-y += $(gcc --print-file-name=libc.a) $(LIBVNC_DIR)/build/libvncserver.a
+endif
 
 # The all: target is the default when no target is given on the
 # command line.
 # This allow a user to issue only 'make' to build a kernel including modules
 # Defaults nautilus but it is usually overriden in the arch makefile
-all: nautilus $(DEFAULT_EXTRA_TARGETS)
+all: $(LIB_TARGETS) nautilus $(DEFAULT_EXTRA_TARGETS)
+
+PHONY += libvnc
 
 ifdef NAUT_CONFIG_DEBUG_INFO
 CFLAGS		+= -g

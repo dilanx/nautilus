@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Nautilus version: 
- * Thu May 25 18:05:02 2023
+ * Sun Jun  4 01:34:58 2023
  */
 #define AUTOCONF_INCLUDED
 
@@ -15,6 +15,8 @@
 #define NAUT_CONFIG_MAX_CPUS 256
 #define NAUT_CONFIG_MAX_IOAPICS 16
 #undef NAUT_CONFIG_PALACIOS
+#define NAUT_CONFIG_LIBVNC 1
+#define NAUT_CONFIG_LIBVNC_DIR "../libvnc"
 
 /*
  * Build

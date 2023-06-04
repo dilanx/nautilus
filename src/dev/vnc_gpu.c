@@ -23,7 +23,6 @@ struct vnc_gpu_dev* vnc_init(uint32_t fb_width, uint32_t fb_height, uint32_t bbp
   }
 
   rfbScreenInfoPtr screen = rfbGetScreen(NULL, NULL, fb_width, fb_height, 8, 3, bbp);
-  
 
   return vnc_dev;
 }
