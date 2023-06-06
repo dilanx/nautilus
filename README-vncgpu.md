@@ -1,5 +1,11 @@
 # VNC GPU Information
 
+STUFF BELOW IS OUTDATED UPDATE FOR LATEST STUFF
+
+- new libvnc stuff
+- conflicting types
+- add instructions on using lwip
+
 [libvnc](https://libvnc.github.io) is installed in `/libvnc`.
 
 ## Preparing `libvnc`

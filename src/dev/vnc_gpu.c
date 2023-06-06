@@ -1,6 +1,7 @@
 /*
  * vnc_gpu.c
  * Copyright (c) 2023 Dilan Nair <https://www.dilanxd.com>
+ * Copyright (c) 2023 Tanmeet Butani
  * 
  * This file is part of the VNC GPU subproject of
  * the Nautilus AeroKernel and is built for Northwestern's
@@ -8,7 +9,6 @@
  */
 
 #include <dev/vnc_gpu.h>
-#include <nautilus/nautilus.h>
 
 #define INFO(fmt, args...) INFO_PRINT("vnc_gpu: " fmt, ##args)
 #define DEBUG(fmt, args...) DEBUG_PRINT("vnc_gpu: " fmt, ##args)
@@ -22,7 +22,13 @@ struct vnc_gpu_dev* vnc_init(uint32_t fb_width, uint32_t fb_height, uint32_t bbp
     return NULL;
   }
 
-  rfbScreenInfoPtr screen = rfbGetScreen(NULL, NULL, fb_width, fb_height, 8, 3, bbp);
+  // rfbScreenInfoPtr screen = rfbGetScreen(NULL, NULL, fb_width, fb_height, 8, 3, bbp);
+  // screen->frameBuffer = malloc(fb_width * fb_height * bbp);
 
+  // rfbInitServer(screen);
+  // rfbRunEventLoop(screen, -1, false);
+
+  // vnc_dev->screen = screen;
+  
   return vnc_dev;
 }

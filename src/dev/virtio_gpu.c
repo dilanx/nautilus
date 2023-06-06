@@ -59,6 +59,7 @@
 #include <dev/pci.h>
 #include <dev/vga.h>    // for capture/restore text
 #include <dev/virtio_gpu.h>
+#include <dev/vnc_gpu.h>
 
 
 ///////////////////////////////////////////////////////////////////
@@ -764,6 +765,8 @@ struct virtio_gpu_dev {
     nk_gpu_dev_box_t             cursor_box;     // for EC - bounding box describing mouse cursor frame buffer
 
     uint16_t                     text_snapshot[80*25];  // so we can save/restore vga text-mode data
+
+    struct vnc_gpu_dev          *vnc_dev;
 };
 
 
@@ -1126,7 +1129,8 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
 
     uint64_t fb_length = pm->r.width * pm->r.height * 4;
 
-    d->frame_buffer = malloc(fb_length);
+    // ! VNCGPU: Do not reallocate framebuffer, instead use VNC framebuffer.
+    //d->frame_buffer = malloc(fb_length);
     
     if (!d->frame_buffer) {
 	ERROR("failed to allocate framebuffer of length %lu\n",fb_length);
@@ -1154,12 +1158,13 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
     // A typical driver would fill it with zeros (black screen), but we
     // might want to put something more exciting there.
 
-    
-    uint8_t buf[fb_length];
+    // ! VNCGPU: Update framebuffer directly
+    uint8_t* buf = d->frame_buffer;
     
     for (int i = 0; i < fb_length; i++) {
         buf[i] = 0xFF;
     }
+    
     d->frame_buffer = buf;
     
     // 5. Now we need to associate our framebuffer (step 4) with our resource (step 2)
@@ -1277,7 +1282,7 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
     //
 
     // EC: Next, we would move the mouse cursor to the middle of the screen
-    
+
     DEBUG("set_mode complete\n");
 
     return 0;
@@ -1961,10 +1966,14 @@ int virtio_gpu_init(struct virtio_pci_dev *virtio_dev)
 	return -1;
     }
 
+    DEBUG("init vnc dev\n");
+
+    struct vnc_gpu_dev* vnc_dev = vnc_init(400, 300, 4);
+
+    //dev->frame_buffer = vnc_dev->screen->frameBuffer;
+
     DEBUG("device inited\n");
 
 
     return 0;
 }
-
-
