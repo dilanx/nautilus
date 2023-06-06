@@ -43,7 +43,6 @@ int errno=0;
 
 #define GEN_DEF(x) \
     int x (void) { \
-        UNDEF_FUN_ERR(); \
         return 0; \
     } 
 
@@ -306,7 +305,7 @@ drand48(void)
 char *
 strerror (int errnum)
 {
-    UNDEF_FUN_ERR();
+    //UNDEF_FUN_ERR();
     return NULL;
 }
 FILE *tmpfile(void)

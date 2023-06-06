@@ -628,7 +628,7 @@ endif
 ifdef NAUT_CONFIG_LIBVNC
   LIBVNC_DIR = $(subst "",,$(NAUT_CONFIG_LIBVNC_DIR))
   CFLAGS += -I$(LIBVNC_DIR)/include -I$(LIBVNC_DIR)/build/include
-  libs-y += $(gcc --print-file-name=libc.a) $(LIBVNC_DIR)/build/libvncserver.a
+  libs-y += $(LIBVNC_DIR)/build/libvncserver.a
 endif
 
 # The all: target is the default when no target is given on the

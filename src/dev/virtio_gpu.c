@@ -49,6 +49,7 @@
 
 */
 
+
 #include <nautilus/nautilus.h>
 
 
@@ -1131,6 +1132,16 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
 
     // ! VNCGPU: Do not reallocate framebuffer, instead use VNC framebuffer.
     //d->frame_buffer = malloc(fb_length);
+
+    DEBUG("init vnc dev\n");
+
+    struct vnc_gpu_dev* vnc_dev = vnc_init(400, 300, 4);
+
+    d->vnc_dev = vnc_dev;
+
+    // d->frame_buffer = vnc_dev->screen->frameBuffer;
+
+    DEBUG("device inited\n");
     
     if (!d->frame_buffer) {
 	ERROR("failed to allocate framebuffer of length %lu\n",fb_length);
@@ -1159,13 +1170,15 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
     // might want to put something more exciting there.
 
     // ! VNCGPU: Update framebuffer directly
-    uint8_t* buf = d->frame_buffer;
+    //uint8_t* buf = d->frame_buffer;
+    uint8_t* buf[fb_length];
     
     for (int i = 0; i < fb_length; i++) {
         buf[i] = 0xFF;
     }
     
-    d->frame_buffer = buf;
+    d->vnc_dev->screen->frameBuffer = buf;
+    rfbMarkRectAsModified(d->vnc_dev->screen, 0, 0, 400, 300);
     
     // 5. Now we need to associate our framebuffer (step 4) with our resource (step 2)
 
@@ -1966,13 +1979,13 @@ int virtio_gpu_init(struct virtio_pci_dev *virtio_dev)
 	return -1;
     }
 
-    DEBUG("init vnc dev\n");
+    // DEBUG("init vnc dev\n");
 
-    struct vnc_gpu_dev* vnc_dev = vnc_init(400, 300, 4);
+    // struct vnc_gpu_dev* vnc_dev = vnc_init(400, 300, 4);
 
-    //dev->frame_buffer = vnc_dev->screen->frameBuffer;
+    // dev->frame_buffer = vnc_dev->screen->frameBuffer;
 
-    DEBUG("device inited\n");
+    // DEBUG("device inited\n");
 
 
     return 0;

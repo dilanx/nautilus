@@ -11,12 +11,11 @@
 #ifndef _VNC_GPU
 #define _VNC_GPU
 
-#include <rfb/rfb.h>
 #include <nautilus/nautilus.h>
+#include <rfb/rfb.h>
 
 struct vnc_gpu_dev {
-  //rfbScreenInfoPtr screen;
-  
+  rfbScreenInfoPtr screen;
 };
 
 struct vnc_gpu_dev* vnc_init(uint32_t fb_width, uint32_t fb_height, uint32_t bbp);

@@ -22,13 +22,21 @@ struct vnc_gpu_dev* vnc_init(uint32_t fb_width, uint32_t fb_height, uint32_t bbp
     return NULL;
   }
 
-  // rfbScreenInfoPtr screen = rfbGetScreen(NULL, NULL, fb_width, fb_height, 8, 3, bbp);
-  // screen->frameBuffer = malloc(fb_width * fb_height * bbp);
+  DEBUG("initializing rfb screen\n");
+  rfbScreenInfoPtr screen = rfbGetScreen(NULL, NULL, fb_width, fb_height, 8, 3, bbp);
 
-  // rfbInitServer(screen);
-  // rfbRunEventLoop(screen, -1, false);
+  DEBUG("allocating rfb framebuffer\n");
+  screen->frameBuffer = malloc(fb_width * fb_height * bbp);
 
-  // vnc_dev->screen = screen;
+  DEBUG("initializing rfb server\n");
+  rfbInitServer(screen);
+
+  DEBUG("starting rfb event loop\n");
+  rfbRunEventLoop(screen, -1, true);
+
+  vnc_dev->screen = screen;
+
+  DEBUG("initted vnc\n");
   
   return vnc_dev;
 }
