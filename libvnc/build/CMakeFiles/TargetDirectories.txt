@@ -1,0 +1,10 @@
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/copy-compile-commands.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/vncclient.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/vncserver.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/test.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/edit_cache.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/rebuild_cache.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/list_install_components.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/install.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/install/local.dir
+/home/tanmeet/Desktop/cs446/nautilus/libvnc/build/CMakeFiles/install/strip.dir

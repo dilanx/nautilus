@@ -226,6 +226,15 @@ handle_net (char * buf, void * priv)
     }
 #endif
 
+#ifdef NAUT_CONFIG_NET_LWIP_APP_VNC
+    if (!strcasecmp(buf,"net lwip vnc")) {
+        void vnc_serve_init();
+        nk_vc_printf("Starting vnc server (port 5900)\n");
+        vnc_serve_init();
+        return 0;
+    }
+#endif
+
 #ifdef NAUT_CONFIG_NET_LWIP_APP_HTTPD
     if (!strcasecmp(buf,"net lwip httpd")) {
         void httpd_init();
