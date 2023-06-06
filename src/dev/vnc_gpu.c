@@ -28,10 +28,12 @@ struct vnc_gpu_dev* vnc_init(uint32_t fb_width, uint32_t fb_height, uint32_t bbp
   DEBUG("allocating rfb framebuffer\n");
   screen->frameBuffer = malloc(fb_width * fb_height * bbp);
 
+  memset(screen->frameBuffer, 0, fb_width*fb_height*bbp);
+
   DEBUG("initializing rfb server\n");
   rfbInitServer(screen);
 
-  DEBUG("starting rfb event loop\n");
+  DEBUG("starting rfb event loop in background\n");
   rfbRunEventLoop(screen, -1, true);
 
   vnc_dev->screen = screen;

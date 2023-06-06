@@ -1371,6 +1371,8 @@ static int flush(void *state)
         return -1;
     }
 
+    rfbMarkRectAsModified(d->vnc_dev->screen, 0, 0, 400, 300);
+
     // User should now see the changes
 
     return 0;
@@ -1524,9 +1526,9 @@ static inline int graphics_draw_pixel(void *state, nk_gpu_dev_coordinate_t *loca
         return 0;
     }
 
-    uint32_t* buf = (uint32_t*) d->frame_buffer;
+    uint32_t* buf = (uint32_t*) d->vnc_dev->screen->frameBuffer;
     buf[y * d->frame_box.width + x] = pixel->raw;
-    d->frame_buffer = buf;
+    d->vnc_dev->screen->frameBuffer = buf;
 
     // location needs to be within the bounding box of the frame buffer
     // and pixel is only drawn if within the clipping box
@@ -1639,7 +1641,7 @@ static int graphics_fill_box_with_pixel(void *state, nk_gpu_dev_box_t *box, nk_g
                 continue;
             }
 
-            uint32_t* buf = (uint32_t*) d->frame_buffer;
+            uint32_t* buf = (uint32_t*) d->vnc_dev->screen->frameBuffer;
             nk_gpu_dev_pixel_t old = {buf[y * d->frame_box.width + x]};
             apply_with_blit(&old, pixel, op);
             graphics_draw_pixel(state, &(nk_gpu_dev_coordinate_t) {x, y}, &old);
