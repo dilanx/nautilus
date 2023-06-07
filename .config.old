@@ -1,7 +1,11 @@
 #
 # Automatically generated make config: don't edit
 #Nautilus: 
+<<<<<<< HEAD
 # Tue Jun  6 16:41:18 2023
+=======
+# Mon Jun  5 20:57:00 2023
+>>>>>>> parent of 3fdcbfe (added vnc as an lwip app and kinda working lwip)
 #
 
 #
@@ -204,7 +208,6 @@ NAUT_CONFIG_NET_LWIP=y
 # LWIP Apps
 #
 NAUT_CONFIG_NET_LWIP_APP_ECHO=y
-NAUT_CONFIG_NET_LWIP_APP_VNC=y
 NAUT_CONFIG_NET_LWIP_APP_HTTPD=y
 NAUT_CONFIG_NET_LWIP_APP_LWIP_SHELL=y
 NAUT_CONFIG_NET_LWIP_APP_SOCKET_ECHO=y

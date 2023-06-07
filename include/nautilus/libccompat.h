@@ -104,7 +104,7 @@ struct pollfd {
     short revents;
 };
 
-typedef void* locale_t_n;
+typedef void* locale_t;
 
 
 #ifndef _STRUCT_TIMESPEC
@@ -168,11 +168,11 @@ int poll (struct pollfd *fds, nfds_t nfds, int timeout);
 int ioctl(int d, unsigned long request, ...);
 int syscall(int number, ...);
 char *setlocale(int category, const char *locale);
-locale_t_n __duplocale(locale_t_n locobj);
+locale_t __duplocale(locale_t locobj);
 char * bindtextdomain (const char * domainname, const char * dirname);
 char * textdomain (const char * domainname);
-locale_t_n __newlocale(int category_mask, const char *locale,locale_t_n base);
-char *__nl_langinfo_l(nl_item item, locale_t_n locale);
+locale_t __newlocale(int category_mask, const char *locale,locale_t base);
+char *__nl_langinfo_l(nl_item item, locale_t locale);
 char * gettext(const char * msgid);
 
 int printf(const char *, ...);

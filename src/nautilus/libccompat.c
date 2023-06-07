@@ -586,8 +586,8 @@ setlocale (int category, const char *locale)
     return NULL;
 }
 
-locale_t_n 
-__duplocale (locale_t_n locobj)
+locale_t 
+__duplocale (locale_t locobj)
 {
     UNDEF_FUN_ERR();
     return NULL;
@@ -607,14 +607,14 @@ textdomain (const char * domainname)
     return NULL;
 }
 
-locale_t_n 
-__newlocale (int category_mask, const char *locale, locale_t_n base)
+locale_t 
+__newlocale (int category_mask, const char *locale, locale_t base)
 {
-    return (locale_t_n)((ulong_t)base | (ulong_t)category_mask);
+    return (locale_t)((ulong_t)base | (ulong_t)category_mask);
 }
 
 char *
-__nl_langinfo_l (nl_item item, locale_t_n locale)
+__nl_langinfo_l (nl_item item, locale_t locale)
 {
     UNDEF_FUN_ERR();
     return NULL;

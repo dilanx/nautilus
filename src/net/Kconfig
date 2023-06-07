@@ -71,14 +71,6 @@ config NET_LWIP_APP_ECHO
 	depends on NET_LWIP
 	help
 		Adds TCP ECHO Server (port 7)
-
-config NET_LWIP_APP_VNC
-	bool "VNC Daemon"
-	default n
-	depends on NET_LWIP
-	depends on LIBVNC
-	help
-		Adds VNC SERVER (port 5900)
 		
 config NET_LWIP_APP_HTTPD
 	bool "HTTP Daemon"

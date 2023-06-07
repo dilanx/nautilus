@@ -1,1 +1,0 @@
-#define NAUT_CONFIG_NET_LWIP_APP_VNC 1

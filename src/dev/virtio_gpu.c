@@ -1135,11 +1135,11 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
 
     DEBUG("init vnc dev\n");
 
-    struct vnc_gpu_dev* vnc_dev = vnc_init(640,480,4);
+    struct vnc_gpu_dev* vnc_dev = vnc_init(400, 300, 4);
 
-    // d->vnc_dev = vnc_dev;
+    d->vnc_dev = vnc_dev;
 
-    d->frame_buffer = malloc(fb_length);
+    // d->frame_buffer = vnc_dev->screen->frameBuffer;
 
     DEBUG("device inited\n");
     
@@ -1178,7 +1178,7 @@ static int set_mode(void *state, nk_gpu_dev_video_mode_t *mode)
     }
     
     d->vnc_dev->screen->frameBuffer = buf;
-    rfbMarkRectAsModified(d->vnc_dev->screen, 0, 0, 640, 480);
+    rfbMarkRectAsModified(d->vnc_dev->screen, 0, 0, 400, 300);
     
     // 5. Now we need to associate our framebuffer (step 4) with our resource (step 2)
 
@@ -1527,7 +1527,7 @@ static inline int graphics_draw_pixel(void *state, nk_gpu_dev_coordinate_t *loca
     }
 
     uint32_t* buf = (uint32_t*) d->vnc_dev->screen->frameBuffer;
-    buf[y * 640 + x] = pixel->raw;
+    buf[y * d->frame_box.width + x] = pixel->raw;
     d->vnc_dev->screen->frameBuffer = buf;
 
     // location needs to be within the bounding box of the frame buffer
@@ -1642,7 +1642,7 @@ static int graphics_fill_box_with_pixel(void *state, nk_gpu_dev_box_t *box, nk_g
             }
 
             uint32_t* buf = (uint32_t*) d->vnc_dev->screen->frameBuffer;
-            nk_gpu_dev_pixel_t old = {buf[y * 640 + x]};
+            nk_gpu_dev_pixel_t old = {buf[y * d->frame_box.width + x]};
             apply_with_blit(&old, pixel, op);
             graphics_draw_pixel(state, &(nk_gpu_dev_coordinate_t) {x, y}, &old);
         }

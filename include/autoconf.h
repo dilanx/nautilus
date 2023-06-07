@@ -1,7 +1,11 @@
 /*
  * Automatically generated C config: don't edit
  * Nautilus version: 
+<<<<<<< HEAD
  * Tue Jun  6 19:03:16 2023
+=======
+ * Mon Jun  5 21:28:29 2023
+>>>>>>> parent of 3fdcbfe (added vnc as an lwip app and kinda working lwip)
  */
 #define AUTOCONF_INCLUDED
 
@@ -205,7 +209,6 @@
  * LWIP Apps
  */
 #define NAUT_CONFIG_NET_LWIP_APP_ECHO 1
-#define NAUT_CONFIG_NET_LWIP_APP_VNC 1
 #define NAUT_CONFIG_NET_LWIP_APP_HTTPD 1
 #define NAUT_CONFIG_NET_LWIP_APP_LWIP_SHELL 1
 #define NAUT_CONFIG_NET_LWIP_APP_SOCKET_ECHO 1
